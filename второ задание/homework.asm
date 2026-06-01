@@ -9,13 +9,13 @@ section .data
     msg_empty db "No numbers were stored.", 0
 
 section .bss
-    ; Резервираме масив от MAX_COUNT елемента, по 8 байта (64-битови цели числа)
+ 
     array resq MAX_COUNT 
 
 section .text
-    global CMAIN
+    global main
 
-CMAIN:
+main:
     mov rbp, rsp ; За правилна работа на дебъгера в SASM
 
     ; 1. Извикваме подпрограмата за четене и съхраняване

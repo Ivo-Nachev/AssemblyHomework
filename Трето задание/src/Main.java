@@ -3,25 +3,23 @@ import java.util.Scanner;
 public class Main {
     // Константата L15 equ 6
     private static final int L15 = 6;
+    private static final long[] n15 = new long[L15];
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-
 
         long r8 = scanner.nextLong();   // GET_DEC 8, r8
         long r9 = scanner.nextLong();   // GET_DEC 8, r9
         long r10 = scanner.nextLong();  // GET_DEC 8, r10
 
-        r9 = r9 + r10;                 // add r9, r10
+        r9 += r10;                 // add r9, r10
 
-        if (r9 >= r8) {                // cmp r9, r8 -> jge end
-            return;
-        }
+        if (r9 >= r8) return;
 
         long r11 = r9 - r8;            // mov r11, r9 -> sub r11, r8
-        r10 = r10 + 20;                // add r10, 20
+        r10 += 20;                // add r10, 20
 
-        long[] n15 = new long[L15];    // section .bss -> n15 resq L15
+           // section .bss -> n15 resq L15
         int rdi = 0;              // Имитира указателя rdi (индекс за запис в масива)
 
         boolean bl = false;            // xor bl, bl (флаг за предходно число)
@@ -69,9 +67,6 @@ public class Main {
         view(n15, rdi);
     }
 
-    // =====================================================================
-    // ПОДПРОГРАМА tN
-    // =====================================================================
     private static boolean tN(long r15, long r8, long r9, long r10) {
         boolean bh = r15 >= r9;        // cmp r15, r9 -> setge bh
         if (r15 < r9) {                // jl .end
@@ -84,9 +79,6 @@ public class Main {
         return bh;
     }
 
-    // =====================================================================
-    // ПОДПРОГРАМА view
-    // =====================================================================
     private static void view(long[] n15, int rdi) {
         System.out.print("results: "); // PRINT_STRING [ .s1 ]
 
